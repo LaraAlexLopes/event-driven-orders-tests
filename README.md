@@ -51,7 +51,7 @@ Each scenario checks more than the status:
 
 ## Findings
 
-### KI-01: an order gets stuck in `PAID` if the payment worker crashes at the wrong moment
+### [KI-01](https://github.com/LaraAlexLopes/event-driven-orders-tests/issues/1): an order gets stuck in `PAID` if the payment worker crashes at the wrong moment
 
 The payment worker commits the payment, and marks the event as processed, **before** it enqueues the stock job. If it crashes in between, Kafka redelivers the event, but the worker skips it as already processed. The order stays `PAID` forever: charged, never fulfilled.
 

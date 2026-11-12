@@ -11,7 +11,7 @@ describe('Known issues', () => {
   });
 
   it.fails(
-    'KI-01 an order should not get stuck in PAID when the payment worker crashes before enqueuing the stock job',
+    'KI-01 (#1) an order should not get stuck in PAID when the payment worker crashes before enqueuing the stock job',
     async () => {
       const product = await createProduct({ stock: 3 });
       await services.stop('redis');
