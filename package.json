@@ -1,0 +1,41 @@
+{
+  "name": "event-driven-orders-tests",
+  "version": "1.0.0",
+  "description": "End-to-end tests for an event-driven order system (Kafka, BullMQ, PostgreSQL) with Vitest and TypeScript",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.22.1 <25"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "@eslint/js": "^10.0.1",
+    "@faker-js/faker": "^10.6.0",
+    "@types/node": "^24.19.2",
+    "@types/pg": "^8.23.1",
+    "bullmq": "^6.7.5",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "ioredis": "^6.0.0",
+    "kafkajs": "^2.2.4",
+    "pg": "^8.23.1",
+    "prettier": "^3.10.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^5.1.0"
+  },
+  "scripts": {
+    "system:up": "docker compose -f docker/docker-compose.yml up -d --build --wait",
+    "system:down": "docker compose -f docker/docker-compose.yml down -v",
+    "system:logs": "docker compose -f docker/docker-compose.yml logs --tail 100 order-api payment-worker inventory-worker",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  }
+}
