@@ -2,3 +2,4 @@ node_modules/
 system/node_modules/
 reports/
 *.log
+.github/issues-draft/
